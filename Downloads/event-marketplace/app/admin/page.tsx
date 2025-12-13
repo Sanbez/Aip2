@@ -331,7 +331,7 @@ export default function AdminPage() {
   }
 
   const getStatusBadge = (status: Event["status"]) => {
-    const variants: Record<Event["status"], { variant: any; icon: any; label: string }> = {
+    const variants: Record<Event["status"], { variant: "default" | "secondary" | "destructive" | "outline"; icon: typeof Clock; label: string }> = {
       pending: { variant: "secondary", icon: Clock, label: "На модерации" },
       approved: { variant: "default", icon: CheckCircle, label: "Опубликовано" },
       rejected: { variant: "destructive", icon: XCircle, label: "Отклонено" },
@@ -557,7 +557,7 @@ export default function AdminPage() {
                   />
                 </div>
               </div>
-              <Select value={sortBy} onValueChange={(value: any) => setSortBy(value)}>
+              <Select value={sortBy} onValueChange={(value: "date" | "title" | "createdAt") => setSortBy(value)}>
                 <SelectTrigger className="w-full md:w-[200px]">
                   <SelectValue placeholder="Сортировка" />
                 </SelectTrigger>

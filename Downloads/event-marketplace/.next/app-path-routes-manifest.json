@@ -1,0 +1,15 @@
+{
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/admin/analytics/page": "/admin/analytics",
+  "/admin/logs/page": "/admin/logs",
+  "/admin/page": "/admin",
+  "/afisha/page": "/afisha",
+  "/event/[id]/page": "/event/[id]",
+  "/favorites/page": "/favorites",
+  "/page": "/",
+  "/profile/page": "/profile",
+  "/settings/page": "/settings",
+  "/submit/page": "/submit",
+  "/tickets/page": "/tickets"
+}

@@ -54,7 +54,7 @@ export function Header() {
     document.body.appendChild(script)
 
     // Telegram callback function
-    ;(window as any).onTelegramAuth = (user: any) => {
+    const handleTelegramAuth = (user: { id: string; first_name: string; last_name?: string; photo_url?: string }) => {
       console.log("Logged in as", user)
       setIsLoggedIn(true)
       localStorage.setItem("isLoggedIn", "true")
@@ -63,6 +63,9 @@ export function Header() {
       localStorage.setItem("userPhoto", user.photo_url || "")
       setIsAuthDialogOpen(false)
     }
+
+    // Expose to window for Telegram widget
+    ;(window as Window & { onTelegramAuth?: typeof handleTelegramAuth }).onTelegramAuth = handleTelegramAuth
 
     return () => {
       document.body.removeChild(script)
@@ -293,8 +296,9 @@ export function Header() {
                         first_name: "Пользователь",
                         last_name: "Telegram",
                         photo_url: ""
-                      };
-                      (window as any).onTelegramAuth(demoUser)
+                      }
+                      const win = window as Window & { onTelegramAuth?: (user: typeof demoUser) => void }
+                      win.onTelegramAuth?.(demoUser)
                     }}
                     className="mt-3"
                   >

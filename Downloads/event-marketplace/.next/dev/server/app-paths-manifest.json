@@ -1,0 +1,7 @@
+{
+  "/afisha/page": "app/afisha/page.js",
+  "/favorites/page": "app/favorites/page.js",
+  "/page": "app/page.js",
+  "/profile/page": "app/profile/page.js",
+  "/tickets/page": "app/tickets/page.js"
+}

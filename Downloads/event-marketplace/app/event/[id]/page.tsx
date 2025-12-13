@@ -2,12 +2,14 @@
 
 import { useState } from "react"
 import { useParams, useRouter } from "next/navigation"
+import Image from "next/image"
 import { ArrowLeft, Clock, Users, Calendar, Tag, Building, Share2, Heart, ChevronLeft, ChevronRight, Award, Flame } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import { useEvents } from "@/lib/events-context"
 import { cn } from "@/lib/utils"
+import { getDaysUntil, formatDate, formatPrice } from "@/lib/date-utils"
 
 export default function EventPage() {
   const params = useParams()
@@ -42,33 +44,6 @@ export default function EventPage() {
     setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length)
   }
 
-  const getDaysUntil = () => {
-    const today = new Date()
-    today.setHours(0, 0, 0, 0)
-    const eventDate = new Date(event.date)
-    eventDate.setHours(0, 0, 0, 0)
-    const diffTime = eventDate.getTime() - today.getTime()
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
-
-    if (diffDays === 0) return "Сегодня"
-    if (diffDays === 1) return "Завтра"
-    if (diffDays < 0) return "Прошло"
-
-    const lastDigit = diffDays % 10
-    const lastTwoDigits = diffDays % 100
-
-    if (lastTwoDigits >= 11 && lastTwoDigits <= 14) {
-      return `Через ${diffDays} дней`
-    }
-    if (lastDigit === 1) {
-      return `Через ${diffDays} день`
-    }
-    if (lastDigit >= 2 && lastDigit <= 4) {
-      return `Через ${diffDays} дня`
-    }
-    return `Через ${diffDays} дней`
-  }
-
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
@@ -88,10 +63,13 @@ export default function EventPage() {
           <div className="lg:w-1/2 p-4 lg:p-6 space-y-4">
             {/* Main Image with Navigation */}
             <div className="relative aspect-[4/3] rounded-xl overflow-hidden">
-              <img
+              <Image
                 src={images[currentImageIndex] || "/placeholder.svg"}
                 alt={event.title}
-                className="w-full h-full object-cover"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+                priority
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
 
@@ -102,7 +80,7 @@ export default function EventPage() {
                   event.isFree ? "bg-primary text-primary-foreground" : "bg-background/90 text-foreground backdrop-blur-sm",
                 )}
               >
-                {event.isFree ? "Бесплатно" : `${event.price.toLocaleString("ru-RU")} ₽`}
+                {event.isFree ? "Бесплатно" : formatPrice(event.price)}
               </Badge>
 
               {/* Promo Badge */}
@@ -242,7 +220,7 @@ export default function EventPage() {
             <div className="p-3 rounded-lg bg-primary/10 border border-primary/20">
               <div className="flex items-center gap-2 text-primary font-medium">
                 <Clock className="w-4 h-4" />
-                <span>{getDaysUntil()}</span>
+                <span>{getDaysUntil(event.date)}</span>
                 <span className="text-muted-foreground">·</span>
                 <span>{event.time}</span>
               </div>
@@ -255,10 +233,7 @@ export default function EventPage() {
                 <div>
                   <p className="text-xs text-muted-foreground">Дата</p>
                   <p className="text-sm font-medium text-foreground">
-                    {new Date(event.date).toLocaleDateString("ru-RU", {
-                      day: "numeric",
-                      month: "long",
-                    })}
+                    {formatDate(event.date)}
                   </p>
                 </div>
               </div>
@@ -295,7 +270,7 @@ export default function EventPage() {
             </Button>
             {!event.isFree && (
               <p className="text-sm text-muted-foreground text-center">
-                Оплата {event.price.toLocaleString("ru-RU")} ₽ производится на месте при входе на мероприятие
+                Оплата {formatPrice(event.price)} производится на месте при входе на мероприятие
               </p>
             )}
           </div>

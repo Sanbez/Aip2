@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { Clock, Users, MapPin, Flame, Calendar, TrendingUp } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -7,6 +8,7 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import type { Event } from "@/lib/events-data"
 import { cn } from "@/lib/utils"
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer"
+import { getDaysUntil, formatDate, formatPrice } from "@/lib/date-utils"
 
 interface EventCardFeaturedProps {
   event: Event
@@ -18,40 +20,6 @@ interface EventCardFeaturedProps {
 export function EventCardFeatured({ event, onDetailsClick, priority = false, delay = 0 }: EventCardFeaturedProps) {
   const { ref, isVisible } = useIntersectionObserver({ threshold: 0.1 })
   const attendancePercent = Math.round((event.currentAttendees / event.maxAttendees) * 100)
-
-  const getDaysUntil = () => {
-    const today = new Date()
-    today.setHours(0, 0, 0, 0)
-    const eventDate = new Date(event.date)
-    eventDate.setHours(0, 0, 0, 0)
-    const diffTime = eventDate.getTime() - today.getTime()
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
-
-    if (diffDays === 0) return "Сегодня"
-    if (diffDays === 1) return "Завтра"
-    if (diffDays < 0) return "Прошло"
-
-    const lastDigit = diffDays % 10
-    const lastTwoDigits = diffDays % 100
-
-    if (lastTwoDigits >= 11 && lastTwoDigits <= 14) {
-      return `Через ${diffDays} дней`
-    }
-    if (lastDigit === 1) {
-      return `Через ${diffDays} день`
-    }
-    if (lastDigit >= 2 && lastDigit <= 4) {
-      return `Через ${diffDays} дня`
-    }
-    return `Через ${diffDays} дней`
-  }
-
-  const formatDate = () => {
-    return new Date(event.date).toLocaleDateString("ru-RU", {
-      day: "numeric",
-      month: "long",
-    })
-  }
 
   return (
     <div
@@ -73,10 +41,13 @@ export function EventCardFeatured({ event, onDetailsClick, priority = false, del
     >
       {/* Background Image with Parallax Effect */}
       <div className="absolute inset-0 overflow-hidden">
-        <img
+        <Image
           src={event.image || "/placeholder.svg"}
           alt={event.title}
-          className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+          fill
+          sizes="(max-width: 768px) 100vw, 50vw"
+          className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+          priority={priority}
         />
         {/* Multi-layer Gradient */}
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
@@ -110,7 +81,7 @@ export function EventCardFeatured({ event, onDetailsClick, priority = false, del
             ? "bg-green-500 text-white"
             : "bg-white/95 text-foreground backdrop-blur-sm"
         )}>
-          {event.isFree ? "Бесплатно" : `${event.price.toLocaleString("ru-RU")} ₽`}
+          {event.isFree ? "Бесплатно" : formatPrice(event.price)}
         </div>
       </div>
 
@@ -131,13 +102,13 @@ export function EventCardFeatured({ event, onDetailsClick, priority = false, del
           <div className="flex items-center gap-2 text-foreground bg-white rounded-xl px-3 py-2 shadow-sm">
             <Calendar className="w-4 h-4 text-muted-foreground" />
             <div className="text-sm">
-              <span className="font-medium">{formatDate()}</span>
+              <span className="font-medium">{formatDate(event.date)}</span>
               <span className="text-muted-foreground ml-1">· {event.time}</span>
             </div>
           </div>
           <div className="flex items-center gap-2 text-foreground bg-white rounded-xl px-3 py-2 shadow-sm">
             <Clock className="w-4 h-4 text-muted-foreground" />
-            <span className="text-sm font-medium">{getDaysUntil()}</span>
+            <span className="text-sm font-medium">{getDaysUntil(event.date)}</span>
           </div>
           <div className="flex items-center gap-2 text-foreground bg-white rounded-xl px-3 py-2 shadow-sm">
             <MapPin className="w-4 h-4 text-muted-foreground" />
