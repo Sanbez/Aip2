@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>19 заданий с атрибутами</title>
+
+    <style>
+        body { font-family: Arial; padding: 20px; line-height: 1.6; }
+        .block { padding: 15px; margin: 15px 0; border: 2px solid #ddd; border-radius: 8px; }
+        .success { color: green; font-weight: bold; }
+        .error { color: red; font-weight: bold; }
+        button { padding: 7px 15px; margin: 5px 0; }
+        .task8_div, #task12_elem { margin: 6px 0; padding: 5px 10px; border: 1px solid #666; display: inline-block; cursor: pointer; }
+        .task13_paragraph { margin: 5px 0; }
+    </style>
+</head>
+<body>
+
+<h1>19 заданий по атрибутам, dataset и classList</h1>
+
+<!-- ===== ЗАДАНИЕ 1–6 ===== -->
+<div class="block">
+    <h2>Задания 1–6</h2>
+
+    <input id="elem" value="hello">
+    <div id="elem2" class="myClass"></div>
+    <input id="elem3">
+    <div id="elem4"></div>
+    <input id="elem5" value="deleteMe">
+    <input id="elem6" value="123">
+
+    <p>Открывай консоль — результаты всех заданий выводятся туда.</p>
+</div>
+
+<!-- ===== ЗАДАНИЕ 7 ===== -->
+<div class="block">
+    <h2>Задание 7. data-text → добавление текста по клику</h2>
+
+    <div id="elem7" data-text="_ADD" class="task8_div">Нажми на меня</div>
+</div>
+
+<!-- ===== ЗАДАНИЕ 8 ===== -->
+<div class="block">
+    <h2>Задание 8. Клик по div + data-num</h2>
+
+    <div class="task8_div" data-num="1">DIV</div>
+    <div class="task8_div" data-num="2">DIV</div>
+</div>
+
+<!-- ===== ЗАДАНИЕ 9 ===== -->
+<div class="block">
+    <h2>Задание 9. Счётчик кликов</h2>
+
+    <button id="task9_button1">Клик!</button>
+    <button id="task9_button2">Показать количество</button>
+
+    <div id="task9_result"></div>
+</div>
+
+<!-- ===== ЗАДАНИЕ 10 ===== -->
+<div class="block">
+    <h2>Задание 10. Проверка длины (data-length)</h2>
+
+    <input id="task10_input" data-length="5" placeholder="Введите 5 символов">
+    <div id="task10_result"></div>
+</div>
+
+<!-- ===== ЗАДАНИЕ 11 ===== -->
+<div class="block">
+    <h2>Задание 11. Проверка диапазона (data-min, data-max)</h2>
+
+    <input id="task11_input" data-min="3" data-max="7" placeholder="Введите 3–7 символов">
+    <div id="task11_result"></div>
+</div>
+
+<!-- ===== ЗАДАНИЕ 12 ===== -->
+<div class="block">
+    <h2>Задание 12. Стоимость товара</h2>
+
+    <div id="task12_elem" data-product-price="10" data-product-amount="3" class="task8_div">
+        Товар
+    </div>
+</div>
+
+<!-- ===== ЗАДАНИЕ 13 ===== -->
+<div class="block">
+    <h2>Задание 13. Добавить data-num абзацам</h2>
+
+    <p class="task13_paragraph">Абзац 1</p>
+    <p class="task13_paragraph">Абзац 2</p>
+    <p class="task13_paragraph">Абзац 3</p>
+</div>
+
+<!-- ===== ЗАДАНИЯ 14–16 ===== -->
+<div class="block">
+    <h2>Задания 14–16. Работа с classList</h2>
+
+    <div id="task14_16_elem" class="aa bb cc">Элемент для теста классов</div>
+</div>
+
+<!-- ===== ЗАДАНИЯ 17–19 ===== -->
+<div class="block">
+    <h2>Задания 17–19. classList.remove, contains, toggle</h2>
+
+    <div id="task17_19_elem" class="www zzz ggg">Проверка классов</div>
+</div>
+
+<script>
+// 1
+let elem1 = document.querySelector('#elem');
+console.log("1:", elem1.getAttribute('value'));
+
+// 2
+console.log("2:", document.querySelector('#elem2').className);
+
+// 3
+let elem3 = document.querySelector('#elem3');
+elem3.setAttribute('value', 'text');
+console.log("3:", elem3.getAttribute('value'));
+
+// 4
+let elem4 = document.querySelector('#elem4');
+elem4.setAttribute('class', 'valid');
+console.log("4:", elem4.className);
+
+// 5
+let elem5 = document.querySelector('#elem5');
+console.log("5 before:", elem5.getAttribute('value'));
+elem5.removeAttribute('value');
+console.log("5 after:", elem5.getAttribute('value'));
+
+// 6
+console.log("6:", document.querySelector('#elem6').hasAttribute('value'));
+
+// 7
+let elem7 = document.querySelector('#elem7');
+elem7.addEventListener('click', function() {
+    this.textContent += this.dataset.text;
+});
+
+// 8
+let task8Divs = document.querySelectorAll('.task8_div');
+task8Divs.forEach(div => {
+    if (div.dataset.num)
+        div.addEventListener('click', function() {
+            this.textContent += ' ' + this.dataset.num;
+        });
+});
+
+// 9
+let task9Button1 = document.querySelector('#task9_button1');
+let task9Button2 = document.querySelector('#task9_button2');
+let task9Result = document.querySelector('#task9_result');
+
+task9Button1.addEventListener('click', function() {
+    this.dataset.clickCount = (+this.dataset.clickCount || 0) + 1;
+});
+
+task9Button2.addEventListener('click', function() {
+    task9Result.textContent = 'Количество кликов: ' + (task9Button1.dataset.clickCount || 0);
+});
+
+// 10
+let task10Input = document.querySelector('#task10_input');
+let task10Result = document.querySelector('#task10_result');
+
+task10Input.addEventListener('blur', function() {
+    let required = +this.dataset.length;
+    let actual = this.value.length;
+    if (actual === required) {
+        task10Result.textContent = 'Правильно!';
+        task10Result.className = 'success';
+    } else {
+        task10Result.textContent = `Ошибка. Нужно ${required}, введено ${actual}`;
+        task10Result.className = 'error';
+    }
+});
+
+// 11
+let task11Input = document.querySelector('#task11_input');
+let task11Result = document.querySelector('#task11_result');
+
+task11Input.addEventListener('blur', function() {
+    let min = +this.dataset.min;
+    let max = +this.dataset.max;
+    let actual = this.value.length;
+    if (actual >= min && actual <= max) {
+        task11Result.textContent = 'Длина в норме';
+        task11Result.className = 'success';
+    } else {
+        task11Result.textContent = `Ошибка. Длина ${actual}, нужно ${min}–${max}`;
+        task11Result.className = 'error';
+    }
+});
+
+// 12
+let task12Elem = document.querySelector('#task12_elem');
+task12Elem.addEventListener('click', function() {
+    let total = this.dataset.productPrice * this.dataset.productAmount;
+    this.textContent += ` (стоимость: ${total})`;
+});
+
+// 13
+let paragraphs = document.querySelectorAll('.task13_paragraph');
+paragraphs.forEach((p, i) => {
+    p.dataset.num = i + 1;
+    console.log(`13. Абзац ${i + 1}:`, p.dataset.num);
+});
+
+// 14
+let task14Elem = document.querySelector('#task14_16_elem');
+console.log("14:", task14Elem.classList.length);
+
+// 15
+console.log("15:", [...task14Elem.classList]);
+
+// 16
+task14Elem.classList.add('xxx');
+console.log("16:", task14Elem.className);
+
+// 17
+let task17Elem = document.querySelector('#task17_19_elem');
+task17Elem.classList.remove('www', 'zzz');
+console.log("17:", task17Elem.className);
+
+// 18
+console.log("18:", task17Elem.classList.contains('ggg'));
+
+// 19
+task17Elem.classList.toggle('www');
+task17Elem.classList.toggle('www');
+console.log("19:", task17Elem.className);
+
+</script>
+
+</body>
+</html>

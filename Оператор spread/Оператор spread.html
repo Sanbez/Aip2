@@ -1,0 +1,15 @@
+
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+
+
+	<script src="Оператор spread.js"></script>
+	</head>
+	<body>
+		
+	</body>
+</html
