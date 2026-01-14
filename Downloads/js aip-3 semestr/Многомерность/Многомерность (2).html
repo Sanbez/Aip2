@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Многомерность</title>
+</head>
+<body>
+    <script>
+        let arr1 = [
+            ['a', 'b', 'c'],
+            ['d', 'e', 'f'],
+            ['g', 'h', 'i'],
+            ['j', 'k', 'l']
+        ];
+
+        console.log("'l' =", arr1[3][2]);
+        console.log("'e' =", arr1[1][1]); 
+        console.log("'g' =", arr1[2][0]); 
+        console.log("'a' =", arr1[0][0]);
+
+        document.write("<h3>Задание №1:</h3>");
+        document.write("<p>'l' = " + arr1[3][2] + "</p>");
+        document.write("<p>'e' = " + arr1[1][1] + "</p>");
+        document.write("<p>'g' = " + arr1[2][0] + "</p>");
+        document.write("<p>'a' = " + arr1[0][0] + "</p>");
+
+        let arr2 = [[1, 2], [3, 4], [5, 6]];
+        
+        let sum = 0;
+        for (let i = 0; i < arr2.length; i++) {
+            for (let j = 0; j < arr2[i].length; j++) {
+                sum += arr2[i][j];
+            }
+        }
+        console.log("Сумма всех элементов:", sum);
+
+        document.write("<h3>Задание №2:</h3>");
+        document.write("<p>Сумма всех элементов: " + sum + "</p>");
+
+        let arr3 = [
+            [
+                [1, 2],
+                [3, 4],
+            ],
+            [
+                [5, 6],
+                [7, 8],
+            ],
+        ];
+
+        let sum3 = 0;
+        
+        for (let i = 0; i < arr3.length; i++) {
+            for (let j = 0; j < arr3[i].length; j++) {
+                for (let k = 0; k < arr3[i][j].length; k++) {
+                    sum3 += arr3[i][j][k];
+                }
+            }
+        }
+
+        console.log("Сумма элементов трехмерного массива:", sum3);
+
+        document.write("<h3>Трехмерный массив:</h3>");
+        document.write("<p>" + JSON.stringify(arr3) + "</p>");
+        document.write("<p>Сумма всех элементов: " + sum3 + "</p>");
+
+        let arr4 = [[1, 2, 3, [4, 5, [6, 7]]], [8, [9, 10]]];
+        
+        let sum4 = arr4[0][0] + arr4[0][1] + arr4[0][2] + 
+                  arr4[0][3][0] + arr4[0][3][1] + 
+                  arr4[0][3][2][0] + arr4[0][3][2][1] +
+                  arr4[1][0] + 
+                  arr4[1][1][0] + arr4[1][1][1];
+
+        console.log("Сумма элементов произвольного массива:", sum4);
+
+        document.write("<h3>Произвольный массив:</h3>");
+        document.write("<p>Массив: [[1, 2, 3, [4, 5, [6, 7]]], [8, [9, 10]]]</p>");
+        document.write("<p>Сумма всех элементов: " + sum4 + "</p>");
+
+        let arr5 = [[1, 2, 3], [4, 5], [6]];
+        let sum5 = 0;
+        
+        for (let i = 0; i < arr5.length; i++) {
+            for (let j = 0; j < arr5[i].length; j++) {
+                sum5 += arr5[i][j];
+            }
+        }
+        console.log("Сумма элементов массива:", sum5);
+
+        document.write("<h3>Перебор многомерных массивов:</h3>");
+        document.write("<p>Массив: [[1, 2, 3], [4, 5], [6]]</p>");
+        document.write("<p>Сумма элементов: " + sum5 + "</p>");
+
+        let arr6 = [[[1, 2], [3, 4]], [[5, 6], [7, 8]]];
+        let sum6 = 0;
+        
+        for (let i = 0; i < arr6.length; i++) {
+            for (let j = 0; j < arr6[i].length; j++) {
+                for (let k = 0; k < arr6[i][j].length; k++) {
+                    sum6 += arr6[i][j][k];
+                }
+            }
+        }
+        console.log("Сумма элементов трехмерного массива:", sum6);
+
+        document.write("<p>Трехмерный массив: [[[1, 2], [3, 4]], [[5, 6], [7, 8]]]</p>");
+        document.write("<p>Сумма элементов: " + sum6 + "</p>");
+
+        let arr7 = [];
+        for (let i = 0; i < 3; i++) {
+            arr7[i] = [];
+            for (let j = 0; j < 5; j++) {
+                arr7[i].push(j + 1);
+            }
+        }
+        console.log("Массив:", arr7);
+
+        let arr8 = [];
+        for (let i = 0; i < 3; i++) {
+            arr8[i] = [];
+            for (let j = 0; j < 4; j++) {
+                arr8[i].push('x');
+            }
+        }
+        console.log("Массив с 'x':", arr8);
+
+        let arr9 = [];
+        for (let i = 0; i < 3; i++) {
+            arr9[i] = [];
+            for (let j = 0; j < 2; j++) {
+                arr9[i][j] = [];
+                for (let k = 0; k < 5; k++) {
+                    arr9[i][j].push(k + 1);
+                }
+            }
+        }
+        console.log("Трехмерный массив:", arr9);
+
+        document.write("<h3>Заполнение многомерных массивов:</h3>");
+        document.write("<p>" + JSON.stringify(arr7) + "</p>");
+        document.write("<p>" + JSON.stringify(arr8) + "</p>");
+        document.write("<p>" + JSON.stringify(arr9) + "</p>");
+
+        let arr10 = [];
+        for (let i = 0; i < 3; i++) {
+            arr10[i] = [];
+            for (let j = 1; j <= 5; j++) {
+                arr10[i].push(j);
+            }
+        }
+
+        let arr11 = [];
+        for (let i = 0; i < 3; i++) {
+            arr11[i] = [];
+            for (let j = 1; j <= 5; j++) {
+                arr11[i].push(j);
+            }
+        }
+
+        let arr12 = [];
+        for (let i = 0; i < 3; i++) {
+            arr12[i] = [];
+            for (let j = 1; j <= 5; j++) {
+                arr12[i].push(j);
+            }
+        }
+
+        let arr13 = [];
+        for (let i = 0; i < 3; i++) {
+            arr13[i] = [];
+            for (let j = 1; j <= 5; j++) {
+                arr13[i].push(j);
+            }
+        }
+
+        let arr14 = [];
+        for (let i = 0; i < 3; i++) {
+            arr14[i] = [];
+            for (let j = 1; j <= 5; j++) {
+                arr14[i].push(j);
+            }
+        }
+
+        let arr15 = [];
+        for (let i = 0; i < 3; i++) {
+            arr15[i] = [];
+            for (let j = 1; j <= 5; j++) {
+                arr15[i].push(j);
+            }
+        }
+
+        document.write("<h3>Исправление ошибок:</h3>");
+        document.write("<p>" + JSON.stringify(arr10) + "</p>");
+        document.write("<p>" + JSON.stringify(arr11) + "</p>");
+        document.write("<p>" + JSON.stringify(arr12) + "</p>");
+        document.write("<p>" + JSON.stringify(arr13) + "</p>");
+        document.write("<p>" + JSON.stringify(arr14) + "</p>");
+        document.write("<p>" + JSON.stringify(arr15) + "</p>");
+
+        let arr16 = [];
+        let k16 = 1;
+        for (let i = 0; i < 4; i++) {
+            arr16[i] = [];
+            for (let j = 0; j < 2; j++) {
+                arr16[i].push(k16++);
+            }
+        }
+
+        let arr17 = [];
+        let k17 = 2;
+        for (let i = 0; i < 4; i++) {
+            arr17[i] = [];
+            for (let j = 0; j < 3; j++) {
+                arr17[i].push(k17);
+                k17 += 2;
+            }
+        }
+
+        let arr18 = [];
+        let k18 = 1;
+        for (let i = 0; i < 2; i++) {
+            arr18[i] = [];
+            for (let j = 0; j < 2; j++) {
+                arr18[i][j] = [];
+                for (let m = 0; m < 2; m++) {
+                    arr18[i][j].push(k18++);
+                }
+            }
+        }
+
+        let arr19 = [];
+        let k19 = 1;
+        for (let i = 0; i < 3; i++) {
+            arr19[i] = [];
+            for (let j = 0; j < 3; j++) {
+                arr19[i][j] = k19;
+                k19++;
+            }
+        }
+
+        let arr20 = [];
+        let k20 = 1;
+        for (let i = 0; i < 3; i++) {
+            arr20[i] = [];
+            for (let j = 0; j < 3; j++) {
+                arr20[i][j] = k20;
+                k20++;
+            }
+        }
+
+        let arr21 = [];
+        let k21 = 1;
+        for (let i = 0; i < 3; i++) {
+            arr21[i] = [];
+            for (let j = 0; j < 3; j++) {
+                arr21[i][j] = k21;
+                k21++;
+            }
+        }
+
+        let arr22 = [];
+        let k22 = 1;
+        for (let i = 0; i < 3; i++) {
+            arr22[i] = [];
+            for (let j = 0; j < 3; j++) {
+                arr22[i][j] = k22;
+                k22++;
+            }
+        }
+
+        let arr23 = [];
+        for (let i = 0, k23 = 1; i < 3; i++) {
+            arr23[i] = [];
+            for (let j = 0; j < 3; j++) {
+                arr23[i][j] = k23;
+                k23++;
+            }
+        }
+
+        let arr24 = [];
+        for (let i = 0, k24 = 1; i < 3; i++) {
+            arr24[i] = [];
+            for (let j = 0; j < 3; j++) {
+                arr24[i][j] = k24;
+                k24++;
+            }
+        }
+
+        let arr25 = [];
+        for (let i = 0, k25 = 1; i < 3; i++) {
+            arr25[i] = [];
+            for (let j = 0; j < 3; j++) {
+                arr25[i][j] = k25;
+                k25++;
+            }
+        }
+
+        let arr26 = [];
+        for (let i = 0, k26 = 1; i < 3; i++) {
+            arr26[i] = [];
+            for (let j = 0; j < 3; j++) {
+                arr26[i][j] = k26++;
+            }
+        }
+
+        let arr27 = [];
+        let k27 = 1;
+        for (let i = 0; i < 3; i++) {
+            arr27[i] = [];
+            for (let j = 0; j < 3; j++) {
+                arr27[i][j] = k27;
+                k27++;
+            }
+        }
+
+        let arr28 = [];
+        for (let i = 0, k28 = 1; i < 3; i++) {
+            arr28[i] = [];
+            for (let j = 0; j < 3; j++) {
+                arr28[i][j] = k28;
+                k28++;
+            }
+        }
+
+        document.write("<h3>Заполнение массивов по порядку:</h3>");
+        document.write("<p>№1: " + JSON.stringify(arr16) + "</p>");
+        document.write("<p>№2: " + JSON.stringify(arr17) + "</p>");
+        document.write("<p>№3: " + JSON.stringify(arr18) + "</p>");
+        document.write("<p>№4: " + JSON.stringify(arr19) + "</p>");
+        document.write("<p>№5: " + JSON.stringify(arr20) + "</p>");
+        document.write("<p>№6: " + JSON.stringify(arr21) + "</p>");
+        document.write("<p>№7: " + JSON.stringify(arr22) + "</p>");
+        document.write("<p>№8: " + JSON.stringify(arr23) + "</p>");
+        document.write("<p>№9: " + JSON.stringify(arr24) + "</p>");
+        document.write("<p>№10: " + JSON.stringify(arr25) + "</p>");
+        document.write("<p>№11: " + JSON.stringify(arr26) + "</p>");
+        document.write("<p>№12: " + JSON.stringify(arr27) + "</p>");
+        document.write("<p>№13: " + JSON.stringify(arr28) + "</p>");
+
+        let obj1 = {
+            1: {
+                1: 11,
+                2: 12,
+                3: 13,
+            },
+            2: {
+                1: 21,
+                2: 22,
+                3: 23,
+            },
+            3: {
+                1: 24,
+                2: 25,
+                3: 26,
+            },
+        }
+
+        let sumObj1 = 0;
+        for (let key in obj1) {
+            let subObj = obj1[key];
+            for (let subKey in subObj) {
+                sumObj1 += subObj[subKey];
+            }
+        }
+        console.log("Сумма элементов объекта №1:", sumObj1);
+
+        let obj2 = {
+            1: {
+                1: {
+                    1: 111,
+                    2: 112,
+                    3: 113,
+                },
+                2: {
+                    1: 121,
+                    2: 122,
+                    3: 123,
+                },
+            },
+            2: {
+                1: {
+                    1: 211,
+                    2: 212,
+                    3: 213,
+                },
+                2: {
+                    1: 221,
+                    2: 222,
+                    3: 223,
+                },
+            },
+            3: {
+                1: {
+                    1: 311,
+                    2: 312,
+                    3: 313,
+                },
+                2: {
+                    1: 321,
+                    2: 322,
+                    3: 323,
+                },
+            },
+        }
+
+        let sumObj2 = 0;
+        for (let key1 in obj2) {
+            let subObj1 = obj2[key1];
+            for (let key2 in subObj1) {
+                let subObj2 = subObj1[key2];
+                for (let key3 in subObj2) {
+                    sumObj2 += subObj2[key3];
+                }
+            }
+        }
+        console.log("Сумма элементов объекта №2:", sumObj2);
+
+        document.write("<h3>Перебор многомерных объектов:</h3>");
+        document.write("<p>Сумма элементов объекта №1: " + sumObj1 + "</p>");
+        document.write("<p>Сумма элементов объекта №2: " + sumObj2 + "</p>");
+
+        let students1 = {
+            'group1': ['name11', 'name12', 'name13'],
+            'group2': ['name21', 'name22', 'name23'],
+            'group3': ['name31', 'name32', 'name33'],
+        };
+
+        console.log("Первый студент из третьей группы:", students1['group3'][0]);
+
+        document.write("<h3>Объект со студентами:</h3>");
+        document.write("<p>Первый студент из третьей группы: " + students1['group3'][0] + "</p>");
+
+        let data1 = {
+            1: [
+                'data11',
+                'data12',
+                'data13',
+            ],
+            2: [
+                'data21',
+                'data22',
+                'data23',
+            ],
+            3: [
+                'data31',
+                'data32',
+                'data33',
+            ],
+            4: [
+                'data41',
+                'data42',
+                'data43',
+            ],
+        };
+
+        document.write("<h3>Структура данных №1:</h3>");
+        for (let key in data1) {
+            for (let i = 0; i < data1[key].length; i++) {
+                document.write("<p>" + data1[key][i] + "</p>");
+            }
+        }
+
+        let data2 = [
+            {
+                1: 'data11',
+                2: 'data12',
+                3: 'data13',
+            },
+            {
+                1: 'data21',
+                2: 'data22',
+                3: 'data33',
+            },
+            {
+                1: 'data31',
+                2: 'data32',
+                3: 'data33',
+            },
+        ];
+
+        document.write("<h3>Структура данных №2:</h3>");
+        for (let i = 0; i < data2.length; i++) {
+            for (let key in data2[i]) {
+                document.write("<p>" + data2[i][key] + "</p>");
+            }
+        }
+
+        let data3 = [
+            {
+                1: [
+                    'data111',
+                    'data112',
+                    'data113',
+                ],
+                2: [
+                    'data121',
+                    'data122',
+                    'data123',
+                ],
+            },
+            {
+                1: [
+                    'data211',
+                    'data212',
+                    'data213',
+                ],
+                2: [
+                    'data221',
+                    'data222',
+                    'data223',
+                ],
+            },
+            {
+                1: [
+                    'data411',
+                    'data412',
+                    'data413',
+                ],
+                2: [
+                    'data421',
+                    'data422',
+                    'data423',
+                ],
+            },
+        ];
+
+        document.write("<h3>Структура данных №3:</h3>");
+        for (let i = 0; i < data3.length; i++) {
+            for (let key in data3[i]) {
+                for (let j = 0; j < data3[i][key].length; j++) {
+                    document.write("<p>" + data3[i][key][j] + "</p>");
+                }
+            }
+        }
+
+        let employees1 = [
+            {
+                name: 'name1',
+                salary: 300,
+            },
+            {
+                name: 'name2',
+                salary: 400,
+            },
+            {
+                name: 'name3',
+                salary: 500,
+            },
+        ];
+
+        document.write("<h3>Работники (задание 1):</h3>");
+        for (let i = 0; i < employees1.length; i++) {
+            document.write("<p>" + employees1[i].name + " - " + employees1[i].salary + "</p>");
+        }
+
+        let employees2 = [
+            {
+                name: 'name1',
+                salary: 300,
+            },
+            {
+                name: 'name2',
+                salary: 400,
+            },
+            {
+                name: 'name3',
+                salary: 500,
+            },
+        ];
+
+        let totalSalary = 0;
+        for (let i = 0; i < employees2.length; i++) {
+            totalSalary += employees2[i].salary;
+        }
+
+        document.write("<h3>Сумма зарплат (задание 2):</h3>");
+        document.write("<p>" + totalSalary + "</p>");
+
+        let employees3 = [
+            {
+                name: 'name1',
+                salary: 300,
+                age: 28,
+            },
+            {
+                name: 'name2',
+                salary: 400,
+                age: 29,
+            },
+            {
+                name: 'name3',
+                salary: 500,
+                age: 30,
+            },
+            {
+                name: 'name4',
+                salary: 600,
+                age: 31,
+            },
+            {
+                name: 'name5',
+                salary: 700,
+                age: 32,
+            },
+        ];
+
+        let totalSalary30Plus = 0;
+        for (let i = 0; i < employees3.length; i++) {
+            if (employees3[i].age >= 30) {
+                totalSalary30Plus += employees3[i].salary;
+            }
+        }
+
+        document.write("<h3>Сумма зарплат работников от 30 лет (задание 3):</h3>");
+        document.write("<p>" + totalSalary30Plus + "</p>");
+
+        let affairs1 = {
+            '2018': {
+                11: {
+                    29: ['name111', 'name112', 'name113'],
+                    30: ['name121', 'name122', 'name123'],
+                },
+                12: {
+                    30: ['name211', 'name212', 'name213'],
+                    31: ['name221', 'name222', 'name223'],
+                },
+            },
+            '2019': {
+                12: {
+                    29: ['name311', 'name312', 'name313'],
+                    30: ['name321', 'name322', 'name323'],
+                    31: ['name331', 'name332', 'name333'],
+                }
+            },
+        }
+
+        let year = '2019';
+        let month = 12;
+        let day = 31;
+
+        document.write("<h3>Дела за определенную дату:</h3>");
+        document.write("<p>Дела за " + day + "." + month + "." + year + ": " + affairs1[year][month][day] + "</p>");
+
+        let obj3 = {
+            key1: {
+                key2: '12',
+                key3: '13',
+            },
+            key2: {
+                key4: '24',
+                key5: '25',
+            },
+        }
+
+        let key1 = 'key2';
+        let key2 = 'key4';
+
+        document.write("<h3>Исправление ошибок:</h3>");
+        document.write("<p>№2 Исправленный: " + obj3[key1][key2] + "</p>");
+        document.write("<p>№3 Исправленный: " + obj3[key1][key2] + "</p>");
+        document.write("<p>№4 Исправленный: " + obj3[key1][key2] + "</p>");
+        document.write("<p>№5 Исправленный: " + obj3[key1][key2] + "</p>");
+
+        let employees4 = [
+            {
+                name: 'name1',
+                salary: 300,
+                age: 28,
+            },
+            {
+                name: 'name2',
+                salary: 400,
+                age: 29,
+            },
+            {
+                name: 'name3',
+                salary: 500,
+                age: 30,
+            },
+        ];
+
+        employees4.push({
+            name: 'name4',
+            salary: 600,
+            age: 31,
+        });
+
+        document.write("<h3>Массив работников с добавленным работником:</h3>");
+        for (let i = 0; i < employees4.length; i++) {
+            document.write("<p>" + employees4[i].name + " - " + employees4[i].salary + " - " + employees4[i].age + "</p>");
+        }
+
+        let affairs2 = {
+            '2019-12-28': ['data11', 'data12', 'data13'],
+            '2019-12-29': ['data21', 'data22', 'data23'],
+            '2019-12-30': ['data31', 'data32', 'data33'],
+        }
+
+        affairs2['2019-12-29'].push('data24');
+
+        affairs2['2019-12-31'] = ['data41', 'data42'];
+
+        document.write("<h3>Список дел:</h3>");
+        for (let date in affairs2) {
+            document.write("<p>" + date + ": " + affairs2[date] + "</p>");
+        }
+
+        let students2 = {
+            'group1': {
+                'subgroup11': ['student111', 'student112', 'student113'],
+                'subgroup12': ['student121', 'student122', 'student123'],
+            },
+            'group2': {
+                'subgroup21': ['student211', 'student212', 'student213'],
+                'subgroup22': ['student221', 'student222', 'student223'],
+            },
+            'group3': {
+                'subgroup31': ['student311', 'student312', 'student313'],
+                'subgroup32': ['student321', 'student322', 'student323'],
+            },
+        };
+
+        students2['group1']['subgroup11'].push('student114');
+
+        students2['group1']['subgroup13'] = ['student131', 'student132', 'student133'];
+
+        students2['group4'] = {
+            'subgroup41': ['student411', 'student412']
+        };
+
+        document.write("<h3>Список студентов:</h3>");
+        for (let group in students2) {
+            document.write("<p><strong>" + group + ":</strong></p>");
+            for (let subgroup in students2[group]) {
+                document.write("<p>" + subgroup + ": " + students2[group][subgroup] + "</p>");
+            }
+        }
+    </script>
+</body>
+</html>

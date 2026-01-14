@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Лабораторная работа</title>
+    <style>
+        .task85_paragraph { cursor: pointer; padding: 5px; margin: 5px; border: 1px solid #ccc; }
+        .task86_div { margin: 10px 0; padding: 10px; border: 1px solid #ddd; }
+        .right { border: 2px solid green; }
+        .wrong { border: 2px solid red; }
+        .contains-three { background-color: lightgreen; }
+        .no-three { background-color: lightcoral; }
+        .palindrome { color: green; }
+        .not-palindrome { color: red; }
+    </style>
+</head>
+<body>
+    <!-- Задание №2 -->
+    <p id="elem1">1</p>
+    <p id="elem2">2</p>
+    <p id="elem3">3</p>
+
+    <!-- Задание №3 -->
+    <div id="block">
+        <p>1 (первый абзац в div#block)</p>
+        <p>2 (второй абзац в div#block)</p>
+    </div>
+
+    <!-- Задание №4 -->
+    <div class="block">
+        <p>1 (первый абзац в div.block)</p>
+        <p>2 (второй абзац в div.block)</p>
+    </div>
+
+    <!-- Задание №5 -->
+    <p class="www">text (первый абзац с классом www)</p>
+    <p class="www">text (второй абзац с классом www)</p>
+
+    <!-- Задание №6 -->
+    <input id="button1" type="submit" value="Кнопка 1">
+    <input id="button2" type="submit" value="Кнопка 2">
+    <input id="button3" type="submit" value="Кнопка 3">
+
+    <!-- Задание №7 -->
+    <input id="task7_button1" type="submit" value="button1">
+    <input id="task7_button2" type="submit" value="button2">
+
+    <!-- Задание №8 -->
+    <p id="task8_elem1">text 1</p>
+    <p id="task8_elem2">text 2</p>
+    <p id="task8_elem3">text 3</p>
+    <p id="task8_elem4">text 4</p>
+    <p id="task8_elem5">text 5</p>
+
+    <!-- Задание №9 -->
+    <p id="task9_elem">text (кликни на меня)</p>
+
+    <!-- Задания №10-13 -->
+    <input id="task10_button" type="submit" value="Задание 10 - Двойной клик">
+    <input id="task11_button" type="submit" value="Задание 11 - Наведение">
+    <input id="task12_button" type="submit" value="Задание 12 - Уход курсора">
+    <input id="task13_button" type="submit" value="Задание 13 - Наведение и уход">
+
+    <!-- Задания №14-19 -->
+    <p id="task14_elem">Текст для задания 14</p>
+    <input id="task14_button" type="submit" value="Задание 14 - Прочитать текст">
+
+    <p id="task15_elem">Старый текст</p>
+    <input id="task15_button" type="submit" value="Задание 15 - Изменить текст">
+
+    <p id="task16_elem1">5</p>
+    <p id="task16_elem2">3</p>
+    <input id="task16_button" type="submit" value="Задание 16 - Сумма двух чисел">
+
+    <p id="task17_elem1">10</p>
+    <p id="task17_elem2">20</p>
+    <p id="task17_elem3">30</p>
+    <div id="task17_result"></div>
+    <input id="task17_button" type="submit" value="Задание 17 - Сумма в див">
+
+    <p id="task18_elem">0</p>
+    <input id="task18_button" type="submit" value="Задание 18 +1">
+
+    <p id="task19_elem">Текст</p>
+    <input id="task19_button" type="submit" value="Задание 19 - Добавить !">
+
+    <!-- Задания №20-21 -->
+    <p id="task20_elem">Обычный <b>жирный</b> текст</p>
+    <input id="task20_button" type="submit" value="Задание 20 - Прочитать HTML">
+
+    <p id="task21_elem">Исходный текст</p>
+    <input id="task21_button" type="submit" value="Задание 21 - Сделать жирным">
+
+    <!-- Задания №22-29 -->
+    <input id="task22_elem" type="email" placeholder="Email input">
+    <input id="task22_button" type="submit" value="Задание 22 - Показать type">
+
+    <input id="task23_elem" type="email" placeholder="Email input">
+    <input id="task23_button" type="submit" value="Задание 23 - Сменить на submit">
+
+    <a id="task24_link" href="https://example.com">Ссылка на Example</a>
+    <input id="task24_button" type="submit" value="Задание 24 - Показать href">
+    <p id="task24_result"></p>
+
+    <a id="task25_link" href="https://google.com">Перейти на Google</a>
+    <input id="task25_button" type="submit" value="Задание 25 - Добавить href в текст">
+
+    <img id="task26_img" src="https://via.placeholder.com/150" alt="Placeholder">
+    <input id="task26_button" type="submit" value="Задание 26 - Показать src">
+    <p id="task26_result"></p>
+
+    <img id="task27_img" src="https://via.placeholder.com/150" alt="Placeholder" width="150">
+    <input id="task27_button" type="submit" value="Задание 27 - Установить width=300">
+
+    <img id="task28_img" src="https://via.placeholder.com/100" alt="Placeholder" width="100">
+    <input id="task28_button" type="submit" value="Задание 28 - Увеличить width в 2 раза">
+
+    <img id="task29_img" src="https://via.placeholder.com/150" alt="Картинка">
+    <input id="task29_button1" type="submit" value="Задание 29 - Картинка 1">
+    <input id="task29_button2" type="submit" value="Задание 29 - Картинка 2">
+
+    <!-- Задания №30-34 -->
+    <input id="task30_input" type="text" placeholder="Введите текст">
+    <input id="task30_button" type="submit" value="Задание 30 - Записать текст">
+
+    <input id="task31_input" type="text" placeholder="Введите текст">
+    <input id="task31_button" type="submit" value="Задание 31 - Вывести в абзац">
+    <p id="task31_result"></p>
+
+    <input id="task32_input1" type="number" placeholder="Введите число">
+    <input id="task32_input2" type="text" placeholder="Здесь будет квадрат числа" readonly>
+    <input id="task32_button" type="submit" value="Задание 32 - Вычислить квадрат">
+
+    <input id="task33_input1" type="text" placeholder="Первый инпут" value="Значение 1">
+    <input id="task33_input2" type="text" placeholder="Второй инпут" value="Значение 2">
+    <input id="task33_button" type="submit" value="Задание 33 - Поменять значения">
+
+    <input id="task34_input1" type="number" placeholder="Число 1">
+    <input id="task34_input2" type="number" placeholder="Число 2">
+    <input id="task34_input3" type="number" placeholder="Число 3">
+    <input id="task34_input4" type="number" placeholder="Число 4">
+    <input id="task34_input5" type="number" placeholder="Число 5">
+    <input id="task34_button" type="submit" value="Задание 34 - Среднее арифметическое">
+    <p id="task34_result"></p>
+
+    <!-- Задания №35-37 -->
+    <input id="task35_input" type="text" placeholder="Задание 35 - кликните сюда">
+    
+    <input id="task36_input" type="number" placeholder="Задание 36 - введите число">
+    <p id="task36_result"></p>
+    
+    <input id="task37_input" type="text" value="Исходный текст">
+
+    <!-- Задания №38-40 -->
+    <div id="task38_elem" class="content no-gap">Див с классами content и no-gap</div>
+    <input id="task38_button" type="submit" value="Задание 38 - Показать класс">
+
+    <div id="task39_elem">Див без классов</div>
+    <input id="task39_button" type="submit" value="Задание 39 - Добавить класс">
+
+    <div id="task40_elem" class="aaa bbb ccc">Див с классами aaa, bbb, ccc</div>
+    <input id="task40_button" type="submit" value="Задание 40 - Получить массив классов">
+
+    <!-- Задания №41-44 -->
+    <img id="task41_image" src="avatar.png" alt="Аватар">
+    
+    <img id="task42_image" src="avatar.png" width="300" height="500" alt="Аватар">
+    
+    <input id="task43_input" type="text" placeholder="Задание 43 - кликните сюда">
+    
+    <input id="task44_button" type="submit" value="1">
+
+    <!-- Задания №45-49 -->
+    <p class="task45_paragraph">Первый абзац</p>
+    <p class="task45_paragraph">Второй абзац</p>
+    <p class="task45_paragraph">Третий абзац</p>
+    <p class="task45_paragraph">Четвертый абзац</p>
+    <p class="task45_paragraph">Пятый абзац</p>
+
+    <input class="task46_input" type="number" value="2">
+    <input class="task46_input" type="number" value="3">
+    <input class="task46_input" type="number" value="4">
+
+    <p class="task47_paragraph">Абзац 1</p>
+    <p class="task47_paragraph">Абзац 2</p>
+    <p class="task47_paragraph">Абзац 3</p>
+    <input id="task47_button" type="submit" value="Задание 47 - Установить 'text'">
+
+    <p class="task48_paragraph">Текст абзаца</p>
+    <p class="task48_paragraph">Текст абзаца</p>
+    <p class="task48_paragraph">Текст абзаца</p>
+    <input id="task48_button" type="submit" value="Задание 48 - Добавить номера">
+
+    <input class="task49_input" type="number" value="10">
+    <input class="task49_input" type="number" value="20">
+    <input class="task49_input" type="number" value="30">
+    <input id="task49_button" type="submit" value="Задание 49 - Вычислить сумму">
+    <p id="task49_result">Сумма: </p>
+
+    <!-- Задания №50-55 -->
+    <input class="task50_input" type="number" value="1">
+    <input class="task50_input" type="number" value="2">
+    <input class="task50_input" type="number" value="3">
+
+    <p class="task51_paragraph">2</p>
+    <p class="task51_paragraph">3</p>
+    <p class="task51_paragraph">4</p>
+
+    <div class="task52_div">1</div>
+    <div class="task52_div">2</div>
+    <div class="task52_div">3</div>
+    <div class="task52_div">4</div>
+    <div class="task52_div">5</div>
+
+    <a id="task53_link" href="https://example.com">Ссылка</a>
+    <input id="task53_button" type="submit" value="Задание 53 - Добавить href (только 1 раз)">
+
+    <input id="task54_button" type="submit" value="1">
+
+    <p class="task55_paragraph">Абзац 1</p>
+    <p class="task55_paragraph">Абзац 2</p>
+    <p class="task55_paragraph">Абзац 3</p>
+
+    <!-- Задания №56-59 -->
+    <ul id="task56_list">
+        <li>5</li>
+        <li>8</li>
+        <li>12</li>
+        <li>3</li>
+    </ul>
+
+    <ul id="task57_list">
+        <li>2</li>
+        <li>4</li>
+        <li>6</li>
+        <li>8</li>
+    </ul>
+
+    <ul id="task58_list">
+        <li>3</li>
+        <li>7</li>
+        <li>12</li>
+        <li>5</li>
+    </ul>
+
+    <ul id="task59_list">
+        <li>2000</li>
+        <li>2004</li>
+        <li>2021</li>
+        <li>2022</li>
+        <li>2025</li>
+        <li>2031</li>
+    </ul>
+    <p id="task59_result"></p>
+
+    <!-- Задания №60-74 -->
+    <h3>Задание 60</h3>
+    <p class="task60">1</p>
+    <p class="task60">2</p>
+    <p class="task60">3</p>
+
+    <!-- Задание 61 -->
+    <h3>Задание 61</h3>
+    <p class="task61">1</p>
+    <p class="task61">2</p>
+    <p class="task61">3</p>
+
+    <!-- Задание 62 -->
+    <h3>Задание 62</h3>
+    <p class="task62">text</p>
+    <button class="task62">click</button>
+
+    <!-- Задание 63 -->
+    <h3>Задание 63</h3>
+    <p class="task63">1</p>
+    <p class="task63">2</p>
+    <p class="task63">3</p>
+    <button class="task63">click</button>
+
+    <!-- Задание 64 -->
+    <h3>Задание 64</h3>
+    <p class="task64">1</p>
+    <p class="task64">2</p>
+    <p class="task64">3</p>
+
+    <!-- Задание 65 -->
+    <h3>Задание 65</h3>
+    <p class="task65">text1</p>
+    <p class="task65">text2</p>
+    <p class="task65">text3</p>
+    <button class="task65">click</button>
+
+    <!-- Задание 66 -->
+    <h3>Задание 66</h3>
+    <p class="task66">1</p>
+    <p class="task66">2</p>
+    <p class="task66">3</p>
+    <button class="task66">click</button>
+
+    <!-- Задание 67 -->
+    <h3>Задание 67</h3>
+    <input class="task67">
+    <input class="task67">
+    <input class="task67">
+    <button class="task67">click</button>
+
+    <!-- Задание 68 -->
+    <h3>Задание 68</h3>
+    <input id="inp1_68">
+    <input id="inp2_68">
+    <input id="inp3_68">
+    <button id="btn_68">click</button>
+
+    <!-- Задание 69 -->
+    <h3>Задание 69</h3>
+    <input id="inp1_69">
+    <input id="inp2_69">
+    <p id="res_69"></p>
+    <button id="btn_69">click</button>
+
+    <!-- Задание 70 -->
+    <h3>Задание 70</h3>
+    <input class="task70" data-text="text1">
+    <input class="task70" data-text="text2">
+    <input class="task70" data-text="text3">
+    <button id="btn_70">click</button>
+
+    <!-- Задание 71 -->
+    <h3>Задание 71</h3>
+    <input class="task71">
+    <input class="task71">
+    <input class="task71">
+    <button id="btn_71">click</button>
+
+    <!-- Задание 72 -->
+    <h3>Задание 72</h3>
+    <input class="task72">
+    <input class="task72">
+    <input class="task72">
+    <button id="btn_72">click</button>
+
+    <!-- Задание 73 -->
+    <h3>Задание 73</h3>
+    <input id="inp1_73">
+    <input id="inp2_73">
+    <input id="inp3_73">
+    <button id="btn_73">click</button>
+
+    <!-- Задание 74 -->
+    <h3>Задание 74</h3>
+    <input id="inp_74">
+
+    <!-- Задания №75-79 -->
+    <h2>Отработка изученного материала</h2>
+    
+    <!-- Задание 75 -->
+    <h3>Задание 75</h3>
+    <input id="task75_input" type="text" placeholder="Введите текст">
+    <p id="task75_result">Текст абзаца: </p>
+
+    <!-- Задание 76 -->
+    <h3>Задание 76</h3>
+    <input class="task76_input" type="number" placeholder="Число 1">
+    <input class="task76_input" type="number" placeholder="Число 2">
+    <input class="task76_input" type="number" placeholder="Число 3">
+    <button id="task76_button">Вычислить сумму</button>
+    <p id="task76_result">Сумма: </p>
+
+    <!-- Задание 77 -->
+    <h3>Задание 77</h3>
+    <input id="task77_input" type="number" placeholder="Введите число">
+    <p id="task77_result">Сумма цифр: </p>
+
+    <!-- Задание 78 -->
+    <h3>Задание 78</h3>
+    <input id="task78_input" type="text" placeholder="Введите числа через запятую (например: 10,20,30)">
+    <p id="task78_result">Среднее арифметическое: </p>
+
+    <!-- Задание 79 -->
+    <h3>Задание 79</h3>
+    <input id="task79_fio" type="text" placeholder="Введите ФИО через пробел (например: Иванов Иван Иванович)">
+    <input id="task79_surname" type="text" placeholder="Фамилия" readonly>
+    <input id="task79_name" type="text" placeholder="Имя" readonly>
+    <input id="task79_patronymic" type="text" placeholder="Отчество" readonly>
+
+    <!-- Задания №80-84 -->
+    <h2>Дополнительные задания</h2>
+    
+    <!-- Задание 80 -->
+    <h3>Задание 80 - ФИО с заглавных букв</h3>
+    <input id="task80_input" type="text" placeholder="Введите ФИО через пробел (например: иванов иван иванович)">
+
+    <!-- Задание 81 -->
+    <h3>Задание 81 - Количество слов</h3>
+    <input id="task81_input" type="text" placeholder="Введите текст">
+    <p id="task81_result">Количество слов: </p>
+
+    <!-- Задание 82 -->
+    <h3>Задание 82 - Формат даты</h3>
+    <input id="task82_input" type="text" placeholder="Введите дату в формате ДД.ММ.ГГГГ (например: 31.12.2016)">
+
+    <!-- Задание 83 -->
+    <h3>Задание 83 - Палиндром</h3>
+    <input id="task83_input" type="text" placeholder="Введите слово">
+    <button id="task83_button">Проверить на палиндром</button>
+    <p id="task83_result"></p>
+
+    <!-- Задание 84 -->
+    <h3>Задание 84 - Проверка на цифру 3</h3>
+    <input id="task84_input" type="number" placeholder="Введите число">
+    
+    <!-- Задание 85 -->
+    <h3>Задание 85 - Счетчик кликов по абзацам</h3>
+    <p class="task85_paragraph">Абзац 1 - кликните</p>
+    <p class="task85_paragraph">Абзац 2 - кликните</p>
+    <p class="task85_paragraph">Абзац 3 - кликните</p>
+    <input id="task85_input" type="text" placeholder="Счетчик кликов" readonly>
+
+    <!-- Задание 86 -->
+    <h3>Задание 86 - Обрезка текста в дивах</h3>
+    <div class="task86_div">Очень длинный текст который нужно обрезать до 10 символов</div>
+    <div class="task86_div">Короткий</div>
+    <div class="task86_div">Еще один очень длинный текст для демонстрации обрезки</div>
+    <button id="task86_button">Обрезать текст</button>
+
+    <!-- Задание 87 -->
+    <h3>Задание 87 - Генерация случайной строки</h3>
+    <input id="task87_input" type="text" placeholder="Случайная строка появится здесь" readonly>
+    <button id="task87_button">Сгенерировать строку</button>
+
+    <!-- Задание 88 -->
+    <h3>Задание 88 - Перемешивание строки</h3>
+    <input id="task88_input" type="text" placeholder="Введите строку для перемешивания">
+    <button id="task88_button">Перемешать</button>
+
+    <!-- Задание 89 -->
+    <h3>Задание 89 - Конвертер температуры</h3>
+    <input id="task89_input" type="number" placeholder="Градусы Фаренгейта">
+    <button id="task89_button">Конвертировать в Цельсии</button>
+    <p id="task89_result">Температура в Цельсиях: </p>
+
+    <!-- Задание 90 -->
+    <h3>Задание 90 - Вычисление факториала</h3>
+    <input id="task90_input" type="number" placeholder="Введите число" min="0">
+    <button id="task90_button">Вычислить факториал</button>
+    <p id="task90_result">Факториал: </p>
+
+    <!-- Задание 91 -->
+    <h3>Задание 91 - Решение квадратного уравнения</h3>
+    <input id="task91_a" type="number" placeholder="Коэффициент a" value="1">
+    <input id="task91_b" type="number" placeholder="Коэффициент b" value="0">
+    <input id="task91_c" type="number" placeholder="Коэффициент c" value="0">
+    <button id="task91_button">Решить уравнение</button>
+    <p id="task91_result">Корни уравнения: </p>
+
+    <script src="dom.js"></script>
+
+    <script>
+    console.log("HTML загружен");
+</script>
+</body>
+</html>
