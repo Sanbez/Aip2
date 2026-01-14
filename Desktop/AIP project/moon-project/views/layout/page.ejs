@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link href="/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Анимированный звездный фон -->
+    <div class="stars"></div>
+    <div class="stars2"></div>
+    <div class="stars3"></div>
+
+    <!-- Навигация -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <span class="logo-moon">🌙</span>
+                <span class="logo-text">MOON</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Главная</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/phases">Фазы</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/facts">Факты</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/gallery">Галерея</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Основной контент -->
+    <main class="main-content">
+        <%- body %>
+    </main>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container text-center">
+            <p>&copy; 2026 MOON Project | Исследуй космос</p>
+        </div>
+    </footer>
+
+    <script src="/jquery/dist/jquery.min.js"></script>
+    <script src="/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

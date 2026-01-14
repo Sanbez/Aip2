@@ -1,0 +1,56 @@
+<% layout('/layout/page.ejs') %>
+
+<div class="container">
+    <div class="hero-section">
+        <h1 class="hero-title">Добро пожаловать в MOON</h1>
+        <p class="hero-subtitle">Исследуйте красоту и тайны нашего единственного естественного спутника</p>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-lg-6">
+            <!-- 3D модель Луны -->
+            <div id="moon-container" class="moon-container"></div>
+        </div>
+        <div class="col-lg-6">
+            <div class="moon-info-card">
+                <h2 class="section-title">Текущая фаза Луны</h2>
+                <div class="phase-info">
+                    <h3 class="phase-name"><%= phaseName %></h3>
+                    <p class="phase-illumination">Освещенность: <span class="highlight"><%= illumination %>%</span></p>
+                    <div class="phase-description">
+                        <p>Сейчас Луна находится в фазе <strong><%= phaseName.toLowerCase() %></strong>.
+                        Поверхность освещена на <%= illumination %>%.</p>
+                    </div>
+                </div>
+                <div class="moon-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">Расстояние от Земли</span>
+                        <span class="stat-value">384,400 км</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Диаметр</span>
+                        <span class="stat-value">3,474 км</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Орбитальный период</span>
+                        <span class="stat-value">27.3 дней</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cta-section">
+        <h2>Исследуйте больше</h2>
+        <p>Узнайте о фазах луны, интересных фактах и посмотрите галерею</p>
+        <div class="cta-buttons">
+            <a href="/phases" class="btn btn-primary-custom">Фазы Луны</a>
+            <a href="/facts" class="btn btn-secondary-custom">Факты</a>
+            <a href="/gallery" class="btn btn-accent-custom">Галерея</a>
+        </div>
+    </div>
+</div>
+
+<!-- Three.js для 3D модели Луны -->
+<script src="/three/build/three.module.min.js" type="module"></script>
+<script src="/javascripts/moon3d.js" type="module"></script>

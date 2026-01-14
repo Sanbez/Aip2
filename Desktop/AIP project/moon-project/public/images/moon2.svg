@@ -1,0 +1,44 @@
+<svg width="1200" height="800" xmlns="http://www.w3.org/2000/svg">
+    <rect fill="#000000" width="1200" height="800"/>
+
+    <!-- Звезды -->
+    <circle cx="150" cy="120" r="1.5" fill="white" opacity="0.7"/>
+    <circle cx="980" cy="180" r="2" fill="white" opacity="0.8"/>
+    <circle cx="220" cy="680" r="1" fill="white" opacity="0.6"/>
+    <circle cx="1080" cy="720" r="1.5" fill="white" opacity="0.9"/>
+
+    <!-- Поверхность с кратерами крупным планом -->
+    <defs>
+        <radialGradient id="moonSurface">
+            <stop offset="0%" style="stop-color:#e0e0e0;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#c0c0c0;stop-opacity:1" />
+        </radialGradient>
+        <radialGradient id="crater1">
+            <stop offset="0%" style="stop-color:#808080;stop-opacity:1" />
+            <stop offset="50%" style="stop-color:#a0a0a0;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#c8c8c8;stop-opacity:1" />
+        </radialGradient>
+    </defs>
+
+    <rect x="200" y="100" width="800" height="600" fill="url(#moonSurface)"/>
+
+    <!-- Большие кратеры -->
+    <circle cx="400" cy="300" r="120" fill="url(#crater1)"/>
+    <circle cx="750" cy="450" r="100" fill="url(#crater1)"/>
+    <circle cx="550" cy="550" r="80" fill="url(#crater1)"/>
+
+    <!-- Средние кратеры -->
+    <circle cx="320" cy="200" r="50" fill="#a0a0a0" opacity="0.7"/>
+    <circle cx="650" cy="250" r="45" fill="#a0a0a0" opacity="0.6"/>
+    <circle cx="880" cy="350" r="55" fill="#a0a0a0" opacity="0.7"/>
+    <circle cx="450" cy="500" r="40" fill="#a0a0a0" opacity="0.6"/>
+
+    <!-- Маленькие кратеры -->
+    <circle cx="290" cy="380" r="25" fill="#909090" opacity="0.5"/>
+    <circle cx="600" cy="350" r="20" fill="#909090" opacity="0.5"/>
+    <circle cx="780" cy="580" r="30" fill="#909090" opacity="0.5"/>
+    <circle cx="350" cy="600" r="22" fill="#909090" opacity="0.5"/>
+
+    <!-- Текст -->
+    <text x="600" y="750" text-anchor="middle" fill="#64ffda" font-size="32" font-family="Arial, sans-serif" font-weight="bold">Кратеры Луны</text>
+</svg>

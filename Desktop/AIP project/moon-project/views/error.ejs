@@ -1,0 +1,11 @@
+<% layout('/layout/page.ejs') %>
+
+<div class="container">
+    <div class="error-page">
+        <div class="error-icon">🌑</div>
+        <h1 class="error-title"><%= error.status || 500 %></h1>
+        <h2 class="error-message"><%= message %></h2>
+        <p class="error-description">Похоже, вы заблудились в космосе...</p>
+        <a href="/" class="btn btn-primary-custom">Вернуться на главную</a>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+<% layout('/layout/page.ejs') %>
+
+<div class="container">
+    <div class="page-header">
+        <h1 class="page-title">Галерея Луны</h1>
+        <p class="page-subtitle">Потрясающие снимки нашего спутника</p>
+    </div>
+
+    <div class="row gallery-grid">
+        <% images.forEach(function(image, index) { %>
+        <div class="col-md-6 mb-4">
+            <div class="gallery-item">
+                <div class="gallery-image-wrapper">
+                    <img src="/images/<%= image.filename %>" alt="<%= image.title %>" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h3><%= image.title %></h3>
+                            <p><%= image.description %></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% }); %>
+    </div>
+
+    <div class="gallery-info-section">
+        <h2 class="section-title">О снимках Луны</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <p>Современные телескопы и космические аппараты позволяют получать невероятно детальные изображения Луны.
+                Каждый снимок раскрывает новые детали поверхности нашего спутника.</p>
+            </div>
+            <div class="col-md-6">
+                <p>От древних морей из застывшей лавы до молодых кратеров - каждая фотография рассказывает историю миллиардов лет
+                космической эволюции.</p>
+            </div>
+        </div>
+    </div>
+</div>

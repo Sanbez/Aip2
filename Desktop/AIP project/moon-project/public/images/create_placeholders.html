@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Moon Placeholder Generator</title>
+</head>
+<body>
+    <h2>Сохраните эти изображения как moon1.jpg, moon2.jpg, moon3.jpg, moon4.jpg</h2>
+    <div>
+        <h3>moon1.jpg - Полная луна</h3>
+        <svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+            <rect fill="#000" width="800" height="600"/>
+            <defs>
+                <radialGradient id="moonGrad1">
+                    <stop offset="0%" style="stop-color:#e8e8e8;stop-opacity:1" />
+                    <stop offset="70%" style="stop-color:#c0c0c0;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#808080;stop-opacity:1" />
+                </radialGradient>
+            </defs>
+            <circle cx="400" cy="300" r="200" fill="url(#moonGrad1)"/>
+            <circle cx="350" cy="250" r="30" fill="#a0a0a0" opacity="0.6"/>
+            <circle cx="430" cy="320" r="40" fill="#a0a0a0" opacity="0.5"/>
+            <circle cx="380" cy="360" r="25" fill="#a0a0a0" opacity="0.7"/>
+            <text x="400" y="550" text-anchor="middle" fill="#666" font-size="24" font-family="Arial">Полная Луна</text>
+        </svg>
+    </div>
+</body>
+</html>
