@@ -1,0 +1,47 @@
+<% layout('/layout/page.ejs') %>
+
+<div class="container">
+    <div class="page-header">
+        <h1 class="page-title">Фазы Луны</h1>
+        <p class="page-subtitle">Понимание лунного цикла</p>
+    </div>
+
+    <div class="phases-intro">
+        <p>Луна проходит через восемь основных фаз в течение своего 29.5-дневного цикла вокруг Земли.
+        Эти фазы определяются положением Луны относительно Солнца и Земли.</p>
+    </div>
+
+    <div class="row phases-grid">
+        <% phases.forEach(function(phase, index) { %>
+        <div class="col-md-6 col-lg-3 mb-4">
+            <div class="phase-card">
+                <div class="phase-icon">
+                    <div class="moon-phase-visual" data-phase="<%= phase.phase %>"></div>
+                </div>
+                <h3 class="phase-card-title"><%= phase.name %></h3>
+                <p class="phase-card-description"><%= phase.description %></p>
+            </div>
+        </div>
+        <% }); %>
+    </div>
+
+    <div class="lunar-cycle-info">
+        <h2 class="section-title">О лунном цикле</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="info-box">
+                    <h4>Синодический месяц</h4>
+                    <p>Период от новолуния до новолуния составляет примерно 29.5 дней. Это время, за которое Луна проходит все свои фазы.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="info-box">
+                    <h4>Влияние на Землю</h4>
+                    <p>Фазы Луны влияют на приливы и отливы океанов. Наибольшие приливы происходят во время новолуния и полнолуния.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/javascripts/phases.js"></script>

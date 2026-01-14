@@ -1,0 +1,32 @@
+<svg width="1200" height="800" xmlns="http://www.w3.org/2000/svg">
+    <rect fill="#000000" width="1200" height="800"/>
+
+    <!-- Звезды -->
+    <circle cx="100" cy="100" r="2" fill="white" opacity="0.8"/>
+    <circle cx="950" cy="150" r="1.5" fill="white" opacity="0.6"/>
+    <circle cx="200" cy="650" r="1" fill="white" opacity="0.7"/>
+    <circle cx="1050" cy="700" r="2" fill="white" opacity="0.9"/>
+    <circle cx="150" cy="400" r="1.5" fill="white" opacity="0.5"/>
+
+    <!-- Полная луна -->
+    <defs>
+        <radialGradient id="moonGrad1">
+            <stop offset="0%" style="stop-color:#f0f0f0;stop-opacity:1" />
+            <stop offset="60%" style="stop-color:#d0d0d0;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#a0a0a0;stop-opacity:1" />
+        </radialGradient>
+    </defs>
+
+    <circle cx="600" cy="400" r="280" fill="url(#moonGrad1)"/>
+
+    <!-- Кратеры -->
+    <circle cx="520" cy="340" r="45" fill="#b0b0b0" opacity="0.6"/>
+    <circle cx="680" cy="420" r="60" fill="#b0b0b0" opacity="0.5"/>
+    <circle cx="570" cy="480" r="35" fill="#b0b0b0" opacity="0.7"/>
+    <circle cx="650" cy="350" r="25" fill="#b0b0b0" opacity="0.6"/>
+    <circle cx="540" cy="430" r="30" fill="#b0b0b0" opacity="0.5"/>
+    <circle cx="700" cy="500" r="40" fill="#b0b0b0" opacity="0.6"/>
+
+    <!-- Текст -->
+    <text x="600" y="750" text-anchor="middle" fill="#64ffda" font-size="32" font-family="Arial, sans-serif" font-weight="bold">Полная Луна</text>
+</svg>

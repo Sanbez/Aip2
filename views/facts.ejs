@@ -1,0 +1,45 @@
+<% layout('/layout/page.ejs') %>
+
+<div class="container">
+    <div class="page-header">
+        <h1 class="page-title">Факты о Луне</h1>
+        <p class="page-subtitle">Удивительные открытия и научные данные</p>
+    </div>
+
+    <div class="facts-grid">
+        <% facts.forEach(function(fact, index) { %>
+        <div class="fact-card" data-aos="fade-up" data-aos-delay="<%= index * 100 %>">
+            <div class="fact-number"><%= index + 1 %></div>
+            <h3 class="fact-title"><%= fact.title %></h3>
+            <p class="fact-text"><%= fact.text %></p>
+        </div>
+        <% }); %>
+    </div>
+
+    <div class="did-you-know">
+        <h2 class="section-title">А знаете ли вы?</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="trivia-card">
+                    <div class="trivia-icon">🚀</div>
+                    <h4>Первый человек на Луне</h4>
+                    <p>Нил Армстронг ступил на Луну 21 июля 1969 года в рамках миссии Apollo 11.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="trivia-card">
+                    <div class="trivia-icon">⏱️</div>
+                    <h4>Лунный день</h4>
+                    <p>Один лунный день длится 29.5 земных суток - от восхода до захода солнца на Луне.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="trivia-card">
+                    <div class="trivia-icon">💎</div>
+                    <h4>Лунная пыль</h4>
+                    <p>Лунная пыль (реголит) очень острая и абразивная, что создавало проблемы астронавтам.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
